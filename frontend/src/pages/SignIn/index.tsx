@@ -8,9 +8,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Box, Button, Stack, Text, Link, useToast } from '@chakra-ui/react';
 
-import * as E from './styles';
 import { CustomInput } from '../../components/CustomInput';
 import { useAuth } from '../../providers/AuthProvider';
+import { DarkBox, LightBox, LightContainer, DarkContainer, DarkSecondaryText, LightSecondaryText } from './styles'
+
 
 const schema = yup.object().shape({
   email: yup.string().email('Digite um email válido').required('Email é obrigatório'),
@@ -65,9 +66,34 @@ const SignIn = () => {
     }
   };
 
+  const [time, setTime] = React.useState(Date.now());
+
+  let theme = window.localStorage.getItem("theme");
+
+  React.useEffect(() => {
+    const interval = setInterval(() => setTime(Date.now()), 100);
+    return () => {
+      theme = window.localStorage.getItem("theme");
+      clearInterval(interval);
+    };
+
+  }, []);
+
   return (
-    <E.Container>
-      <E.Box>
+    <div
+      style={
+        theme === 'light' ? LightContainer : DarkContainer
+
+      }
+
+    >
+      <Box
+        style={
+          theme === 'light' ? LightBox : DarkBox
+
+        }
+
+      >
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={2}>
             <Controller
@@ -75,13 +101,26 @@ const SignIn = () => {
               control={control}
               defaultValue={state?.email}
               render={({ field }) => (
-                <CustomInput {...field} type="email" placeholder="Email" errorMessage={errors?.email?.message} />
+                <CustomInput
+                  style={
+                    theme === 'light' ? LightSecondaryText : DarkSecondaryText
+                  }
+                  {...field}
+                  type="email" placeholder="Email" errorMessage={errors?.email?.message}
+
+
+                />
               )}
             />
 
-            <Box my={2} />
+            <Box my={2}
+
+
+            />
 
             <Controller
+
+
               name="password"
               control={control}
               defaultValue={state?.password}
@@ -115,14 +154,19 @@ const SignIn = () => {
               Esqueci minha senha
             </Link>
 
-            <Text mt={5}>Não possui conta?</Text>
+            <Text mt={5}
+              style={
+                theme === 'light' ? LightSecondaryText : DarkSecondaryText
+              }
+
+            >Não possui conta?</Text>
             <Link color="teal.500" href="/register" mt={2}>
               Criar agora
             </Link>
           </Box>
         </form>
-      </E.Box>
-    </E.Container>
+      </Box>
+    </div >
   );
 };
 

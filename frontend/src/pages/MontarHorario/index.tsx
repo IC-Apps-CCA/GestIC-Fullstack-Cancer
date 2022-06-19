@@ -22,7 +22,7 @@ import { BsSearch } from 'react-icons/bs';
 import { useHistory } from 'react-router-dom';
 import { Page } from '../../components/Page';
 import { useAuth } from '../../providers/AuthProvider';
-
+import { DarkText, LightText } from './theme';
 import { api } from '../../services/api';
 
 interface dataType {
@@ -172,6 +172,19 @@ const MontarHorario = () => {
     }
   }, [times]);
 
+  const [time, setTime] = React.useState(Date.now());
+
+  let theme = window.localStorage.getItem("theme");
+
+  React.useEffect(() => {
+    const interval = setInterval(() => setTime(Date.now()), 100);
+    return () => {
+      theme = window.localStorage.getItem("theme");
+      clearInterval(interval);
+    };
+
+  }, []);
+
   const handleChange = (event: { target: { value: string } }) => {
     const { value } = event.target;
     if (disciplines.length) {
@@ -192,7 +205,7 @@ const MontarHorario = () => {
     <Page>
       <Box p={8}>
         <Box display="flex" w="100%" mb={4} alignItems="center" justifyContent={user ? 'space-between' : 'left'}>
-          <Heading color="teal" textAlign="center" mr={2}>
+          <Heading style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}} textAlign="center" mr={2}>
             Montar Horário
           </Heading>
           <Box display="flex" mb={4} alignItems="center" justifyContent="left">
@@ -202,7 +215,7 @@ const MontarHorario = () => {
           </Box>
         </Box>
         <Box minW="20%" w="25%" mb={5}>
-          <InputGroup color="teal">
+          <InputGroup style={{color: theme === "light" ? '#192A51' : '#192A51'}}>
             <Input placeholder="Buscar" bg="white" onChange={handleChange} />
             <InputRightElement>
               <BsSearch />
@@ -230,12 +243,21 @@ const MontarHorario = () => {
             </Text>
           </>
         ) : (
-          <Text display="flex" alignItems="center" justifyContent="center">
-            {isLoading ? <Spinner color="teal" size="xl" /> : <Text>Não há disciplinas cadastradas</Text>}
+          <Text display="flex" alignItems="center" justifyContent="center"
+            style={theme === 'light' ? LightText : DarkText}
+          >
+            {isLoading ? <Spinner style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}} size="xl" /> : <Text
+              style={theme === 'light' ? LightText : DarkText}
+
+
+            >Não há disciplinas cadastradas</Text>}
           </Text>
         )}
         {disciplinesSelected.length ? (
-          <Text display="flex" alignItems="center" mb={1}>
+          <Text display="flex" alignItems="center" mb={1}
+            style={theme === 'light' ? LightText : DarkText}
+
+          >
             Remover
           </Text>
         ) : null}
@@ -255,20 +277,27 @@ const MontarHorario = () => {
         <Table variant="simple">
           <TableCaption>Horário de disciplinas</TableCaption>
           <Thead>
-            <Tr>
+            <Tr
+              style={theme === 'light' ? LightText : DarkText}
+
+            >
               <Th />
-              <Th>Segunda</Th>
-              <Th>Terça</Th>
-              <Th>Quarta</Th>
-              <Th>Quinta</Th>
-              <Th>Sexta</Th>
+              <Th style={theme === 'light' ? LightText : DarkText} >Segunda</Th>
+              <Th style={theme === 'light' ? LightText : DarkText}>Terça</Th>
+              <Th style={theme === 'light' ? LightText : DarkText}>Quarta</Th>
+              <Th style={theme === 'light' ? LightText : DarkText}>Quinta</Th>
+              <Th style={theme === 'light' ? LightText : DarkText}>Sexta</Th>
             </Tr>
           </Thead>
           <Tbody>
             {table.map((row, idx) => {
               return (
                 <Tr key={idx}>
-                  <Td>{times[idx]}</Td>
+                  <Td
+                    style={theme === 'light' ? LightText : DarkText}
+
+
+                  >{times[idx]}</Td>
                   {row.map((col, idx) => {
                     return <Td key={idx}>{col}</Td>;
                   })}

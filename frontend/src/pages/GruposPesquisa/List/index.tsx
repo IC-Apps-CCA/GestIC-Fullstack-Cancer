@@ -21,6 +21,7 @@ import { AddIcon } from '@chakra-ui/icons';
 import { Page } from '../../../components/Page';
 import { useAuth } from '../../../providers/AuthProvider';
 import { api } from '../../../services/api';
+import { DarkText, LightText } from './theme'
 
 interface groupData {
   id: string;
@@ -68,6 +69,19 @@ const GruposPesquisa = () => {
     getAllGroups();
   }, []);
 
+  const [time, setTime] = React.useState(Date.now());
+
+  let theme = window.localStorage.getItem("theme");
+
+  React.useEffect(() => {
+    const interval = setInterval(() => setTime(Date.now()), 100);
+    return () => {
+      theme = window.localStorage.getItem("theme");
+      clearInterval(interval);
+    };
+
+  }, []);
+
   const handleChange = event => {
     const { value } = event.target;
     if (groups.length) {
@@ -90,7 +104,7 @@ const GruposPesquisa = () => {
       <Box p={8}>
         <Box display="flex" mb={10} flexDirection="column" justifyContent="space-between" margin="auto">
           <Box display="flex" w="100%" mb={4} alignItems="center" justifyContent={user ? 'space-between' : 'left'}>
-            <Heading color="teal" textAlign="center" mr={2}>
+            <Heading style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}} textAlign="center" mr={2}>
               Grupos de Pesquisa
             </Heading>
             {user && (
@@ -106,7 +120,7 @@ const GruposPesquisa = () => {
           </Box>
 
           <Box minW="20%" w="25%" mb={user ? 6 : 0}>
-            <InputGroup color="teal">
+            <InputGroup style={{color: theme === "light" ? '#192A51' : '#192A51'}}>
               <Input placeholder="Buscar" bg="white" onChange={handleChange} />
               <InputRightElement>
                 <BsSearch />
@@ -118,27 +132,46 @@ const GruposPesquisa = () => {
           <Table variant="simple">
             <Thead>
               <Tr>
-                <Th>Nome</Th>
-                <Th>Descrição</Th>
+                <Th style={
+                  theme === 'light' ? LightText : DarkText
+                } >Nome</Th>
+                <Th
+                  style={
+                    theme === 'light' ? LightText : DarkText
+                  }
+                >Descrição</Th>
               </Tr>
             </Thead>
             <Tbody>
               {groupsSearch.map(group => {
                 return (
                   <Tr key={group.id}>
-                    <Td>
+                    <Td
+                      style={
+                        theme === 'light' ? LightText : DarkText
+                      }
+                    >
                       <Link display="block" href={`grupos-de-pesquisa/show/${group.id}`}>
                         {group.name}
                       </Link>
-                    </Td>
-                    <Td>{group.description}</Td>
+                    </Td
+                    >
+                    <Td
+                      style={
+                        theme === 'light' ? LightText : DarkText
+                      }
+                    >{group.description}</Td>
                   </Tr>
                 );
               })}
             </Tbody>
           </Table>
         ) : (
-          <Text>Não há grupos de pesquisa cadastrados</Text>
+          <Text
+            style={
+              theme === 'light' ? LightText : DarkText
+            }
+          >Não há grupos de pesquisa cadastrados</Text>
         )}
       </Box>
     </Page>

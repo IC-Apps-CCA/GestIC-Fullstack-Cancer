@@ -118,21 +118,21 @@ const InformativeList = () => {
         {informativeList.length === 0 ? (
           <Center flexDirection="column">
             <Box display="flex" w="100%" mb={4} alignItems="center" justifyContent="center">
-              <Heading color="teal" textAlign="center" mr={2}>
+              <Heading color="#192A51" textAlign="center" mr={2}>
                 Informativos
               </Heading>
               {!isLoading && user && (
                 <Button
                   leftIcon={<AddIcon />}
                   onClick={() => history.push('informativos/new')}
-                  colorScheme="teal"
+                  colorScheme="#192A51"
                   variant="outline"
                 >
                   Criar novo
                 </Button>
               )}
             </Box>
-            {isLoading ? <Spinner color="teal" size="xl" /> : <Text>Não há informativos por enquanto.</Text>}
+            {isLoading ? <Spinner color="#192A51" size="xl" /> : <Text>Não há informativos por enquanto.</Text>}
           </Center>
         ) : (
           <>
@@ -153,14 +153,14 @@ const InformativeList = () => {
                 alignItems="center"
                 justifyContent={user ? 'space-between' : 'center'}
               >
-                <Heading color="teal" textAlign="center" mr={2}>
+                <Heading color="#192A51" textAlign="center" mr={2}>
                   Informativos
                 </Heading>
                 {user && (
                   <Button
                     leftIcon={<AddIcon />}
                     onClick={() => history.push('informativos/new')}
-                    colorScheme="teal"
+                    colorScheme="#192A51"
                     variant="outline"
                   >
                     Criar novo
@@ -168,7 +168,7 @@ const InformativeList = () => {
                 )}
               </Box>
               <Box minW="55%" w="100%">
-                <InputGroup color="teal">
+                <InputGroup color="#192A51">
                   <Input placeholder="Buscar" bg="white" onChange={handleChange} />
                   <InputRightElement>
                     <BsSearch />
@@ -178,7 +178,7 @@ const InformativeList = () => {
             </Box>
             {isLoading ? (
               <Center flexDirection="column" mt={4}>
-                <Spinner color="teal" size="xl" />
+                <Spinner color="#192A51" size="xl" />
               </Center>
             ) : (
               <Box maxW="80vh" margin="auto">

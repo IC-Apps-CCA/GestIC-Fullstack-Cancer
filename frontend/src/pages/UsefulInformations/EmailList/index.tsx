@@ -85,16 +85,16 @@ const EmailListPage = () => {
   return (
     <Page>
       <Box p={8} pt={isSmallerThan766 ? 10 : 8} maxW={isSmallerThan766 ? '100%' : '60vw'}>
-        <Heading color="teal">Lista de E-mails do IC</Heading>
+        <Heading color="#192A51">Lista de E-mails do IC</Heading>
         <Box minW="55%" w="100%" my={4}>
-          <InputGroup color="teal">
+          <InputGroup color="#192A51">
             <Input placeholder="Procurar e-mail" bg="white" onChange={handleChange} />
             <InputRightElement>
               <BsSearch />
             </InputRightElement>
           </InputGroup>
         </Box>
-        <Box color="teal">
+        <Box color="#192A51">
           {fixedEmailListSearch.length ? (
             fixedEmailListSearch.map(currentItem => (
               <>
@@ -110,7 +110,7 @@ const EmailListPage = () => {
             <></>
           )}
         </Box>
-        <Box color="teal">
+        <Box color="#192A51">
           {emailListSearch.length ? (
             <>
               <Heading size="md" my={4}>

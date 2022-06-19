@@ -23,7 +23,7 @@ import { BsSearch } from 'react-icons/bs';
 import { AddIcon } from '@chakra-ui/icons';
 import { Page } from '../../components/Page';
 import { useAuth } from '../../providers/AuthProvider';
-
+import { LightText, DarkText } from './theme'
 import { api } from '../../services/api';
 
 interface dataType {
@@ -65,6 +65,20 @@ const ProjetosAtivos = () => {
     }
   };
 
+  const [time, setTime] = React.useState(Date.now());
+
+  let theme = window.localStorage.getItem("theme");
+
+  React.useEffect(() => {
+    const interval = setInterval(() => setTime(Date.now()), 100);
+    return () => {
+      theme = window.localStorage.getItem("theme");
+      clearInterval(interval);
+    };
+
+  }, []);
+
+
   React.useEffect(() => {
     getAllActiveProjects();
   }, [toast]);
@@ -91,7 +105,9 @@ const ProjetosAtivos = () => {
       <Box p={8}>
         <Box display="flex" mb={10} flexDirection="column" justifyContent="space-between" margin="auto">
           <Box display="flex" w="100%" mb={4} alignItems="center" justifyContent={user ? 'space-between' : 'left'}>
-            <Heading color="teal" textAlign="center" mr={2}>
+            <Heading style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}} textAlign="center" mr={2}
+
+            >
               Projetos Ativos
             </Heading>
             {!isLoading && user && (
@@ -107,7 +123,7 @@ const ProjetosAtivos = () => {
           </Box>
 
           <Box minW="20%" w="25%" mb={user ? 6 : 0}>
-            <InputGroup color="teal">
+            <InputGroup style={{color: theme === "light" ? '#192A51' : '#192A51'}}>
               <Input placeholder="Buscar" bg="white" onChange={handleChange} />
               <InputRightElement>
                 <BsSearch />
@@ -119,21 +135,30 @@ const ProjetosAtivos = () => {
           <Table variant="simple">
             <Thead>
               <Tr>
-                <Th>Nome</Th>
-                <Th>Descrição</Th>
+                <Th style={theme === 'light' ? LightText : DarkText}>Nome</Th>
+                <Th style={theme === 'light' ? LightText : DarkText}>Descrição</Th>
               </Tr>
             </Thead>
             <Tbody>
               {activeProjectsSearch.map(project => {
                 return (
-                  <Link key={project.id} as={Tr} href={`projetos-ativos/show/${project.id}`}>
+                  <Link key={project.id} as={Tr} href={`projetos-ativos/show/${project.id}`}
+                    style={theme === 'light' ? LightText : DarkText}
+
+                  >
                     <Td>
-                      <Link display="block" href={`projetos-ativos/show/${project.id}`}>
+                      <Link display="block" href={`projetos-ativos/show/${project.id}`}
+                        style={theme === 'light' ? LightText : DarkText}
+
+                      >
                         {project.name}
                       </Link>
                     </Td>
-                    <Td>
-                      <Link display="block" href={`projetos-ativos/show/${project.id}`}>
+                    <Td >
+                      <Link display="block" href={`projetos-ativos/show/${project.id}`}
+                        style={theme === 'light' ? LightText : DarkText}
+
+                      >
                         {project.description}
                       </Link>
                     </Td>
@@ -144,7 +169,11 @@ const ProjetosAtivos = () => {
           </Table>
         ) : (
           <Text display="flex" alignItems="center" justifyContent="center">
-            {isLoading ? <Spinner color="teal" size="xl" /> : <Text>Não há projetos ativos cadastrados.</Text>}
+            {isLoading ? <Spinner style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}} size="xl" /> : <Text
+
+              style={theme === 'light' ? LightText : DarkText}
+
+            >Não há projetos ativos cadastrados.</Text>}
           </Text>
         )}
       </Box>

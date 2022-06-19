@@ -2,10 +2,24 @@ import * as React from 'react';
 import { Box, Divider, Heading, Link, Text, Spinner } from '@chakra-ui/react';
 import { api } from '../../services/api';
 import { InformativeItem } from '../../pages/Informative/Item';
+import theme from '../../styles/theme';
 
 const Informative = () => {
   const [informativeList, setInformativeList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+
+  const [time, setTime] = React.useState(Date.now());
+
+  let theme = window.localStorage.getItem("theme");
+
+  React.useEffect(() => {
+    const interval = setInterval(() => setTime(Date.now()), 100);
+    return () => {
+      theme = window.localStorage.getItem("theme");
+      clearInterval(interval);
+    };
+
+  }, []);
 
   const getInformativeList = async () => {
     try {
@@ -27,9 +41,9 @@ const Informative = () => {
   const render = () => {
     if (!informativeList.length) {
       if (isLoading) {
-        return <Spinner color="teal" size="xl" />;
+        return <Spinner color="#192A51" size="xl" />;
       }
-      return <Text>Não há informativos por enquanto.</Text>;
+      return <Text style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}}>Não há informativos por enquanto.</Text>;
     }
     return informativeList.map((informative, index) => (
       <React.Fragment key={`key-${index}`}>
@@ -41,8 +55,8 @@ const Informative = () => {
 
   return (
     <Box fontSize="xl" w="100%">
-      <Box color="teal" mb={4} display="flex" alignItems="center" position="relative" top="25px">
-        <Heading width="100%" position="absolute">
+      <Box color="#192A51" mb={4} display="flex" alignItems="center" position="relative" top="25px">
+        <Heading width="100%" position="absolute" style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}}>
           Informativos
         </Heading>
         {!!informativeList.length && (

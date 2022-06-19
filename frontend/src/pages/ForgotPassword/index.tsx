@@ -6,9 +6,10 @@ import { useForm, Controller } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import * as E from './styles';
 import { CustomInput } from '../../components/CustomInput';
 import { Page } from '../../components/Page';
+import { DarkBox, LightBox, LightContainer, DarkContainer, DarkSecondaryText, LightSecondaryText } from './styles'
+
 
 const schema = yup.object().shape({
   email: yup.string().email('Digite um email válido').required('Email é obrigatório'),
@@ -27,6 +28,19 @@ const ForgotPassword = () => {
   const toast = useToast();
 
   const { errors } = formState;
+
+  const [time, setTime] = React.useState(Date.now());
+
+  let theme = window.localStorage.getItem("theme");
+
+  React.useEffect(() => {
+    const interval = setInterval(() => setTime(Date.now()), 100);
+    return () => {
+      theme = window.localStorage.getItem("theme");
+      clearInterval(interval);
+    };
+
+  }, []);
 
   const onSubmit = (data: ForgotPasswordFormInputs) => {
     console.log(data);
@@ -52,8 +66,19 @@ const ForgotPassword = () => {
 
   return (
     <Page>
-      <E.Container>
-        <E.Box>
+      <div
+        style={
+          theme === 'light' ? LightContainer : DarkContainer
+
+        }
+      >
+        <Box
+
+          style={
+            theme === 'light' ? LightBox : DarkBox
+
+          }
+        >
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={2}>
               <Controller
@@ -85,8 +110,8 @@ const ForgotPassword = () => {
               </Link>
             </Box>
           </form>
-        </E.Box>
-      </E.Container>
+        </Box>
+      </div>
     </Page>
   );
 };
