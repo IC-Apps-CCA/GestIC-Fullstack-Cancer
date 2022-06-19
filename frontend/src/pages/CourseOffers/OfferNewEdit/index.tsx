@@ -11,13 +11,13 @@ import { CustomInput } from '../../../components/CustomInput';
 import { CustomTextarea } from '../../../components/CustomTextarea';
 
 const schema = yup.object().shape({
-  name: yup.string().required('Campo obrigatório'),
-  code: yup.string().required('Campo obrigatório'),
-  codeClassroom: yup.string().required('Campo obrigatório'),
-  linkClassroom: yup.string().required('Campo obrigatório'),
-  linkMeets: yup.string().required('Campo obrigatório'),
-  linkWpp: yup.string().required('Campo obrigatório'),
-  linkTel: yup.string().required('Campo obrigatório'),
+  name: yup.string().trim().required('Campo obrigatório'),
+  code: yup.string().trim().required('Campo obrigatório'),
+  codeClassroom: yup.string().trim().required('Campo obrigatório'),
+  linkClassroom: yup.string().trim().required('Campo obrigatório'),
+  linkMeets: yup.string().trim().required('Campo obrigatório'),
+  linkWpp: yup.string().trim().required('Campo obrigatório'),
+  linkTel: yup.string().trim().required('Campo obrigatório'),
 });
 
 type OfferFormInputs = {

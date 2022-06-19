@@ -25,8 +25,8 @@ import { api } from '../../../services/api';
 import { Page } from '../../../components/Page';
 
 const schema = yup.object().shape({
-  title: yup.string().required('Campo obrigatório'),
-  start: yup.string().required('Campo obrigatório'),
+  title: yup.string().trim().required('Campo obrigatório'),
+  start: yup.string().trim().required('Campo obrigatório'),
 });
 
 type EventFormInputs = {
@@ -206,7 +206,7 @@ const EventNewEdit = () => {
                 alignSelf="end"
                 disabled={Object.values(errors).length > 0}
               >
-                Adicionar Novo
+                {id ? 'Editar' : 'Adicionar'}
               </Button>
             </Box>
           </form>

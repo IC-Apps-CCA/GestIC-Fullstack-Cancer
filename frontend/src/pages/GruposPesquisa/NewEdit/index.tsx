@@ -11,9 +11,9 @@ import { CustomInput } from '../../../components/CustomInput';
 import { CustomTextarea } from '../../../components/CustomTextarea';
 
 const schema = yup.object().shape({
-  name: yup.string().required('Campo obrigatório'),
-  description: yup.string().required('Campo obrigatório'),
-  activities: yup.string().required('Campo obrigatório'),
+  name: yup.string().trim().required('Campo obrigatório'),
+  description: yup.string().trim().required('Campo obrigatório'),
+  activities: yup.string().trim().required('Campo obrigatório'),
 });
 
 type ResearchGroupsFormInputs = {

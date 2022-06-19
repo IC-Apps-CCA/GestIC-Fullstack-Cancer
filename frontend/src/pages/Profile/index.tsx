@@ -31,24 +31,28 @@ import { useAuth } from '../../providers/AuthProvider';
 import image from '../../uploads/users/eu2.jpeg';
 
 const schema = yup.object().shape({
-  name: yup.string(),
-  surname: yup.string(),
-  old_password: yup.string(),
-  password: yup.string().when('old_password', {
-    is: (val: string) => {
-      return !!val.length;
-    },
-    then: yup.string().required('Campo obrigátorio'),
-    otherwise: yup.string(),
-  }),
-  password_confirmation: yup
+  name: yup.string().trim(),
+  surname: yup.string().trim(),
+  old_password: yup.string().trim(),
+  password: yup
     .string()
+    .trim()
     .when('old_password', {
       is: (val: string) => {
         return !!val.length;
       },
-      then: yup.string().required('Campo obrigátorio'),
-      otherwise: yup.string(),
+      then: yup.string().trim().required('Campo obrigátorio'),
+      otherwise: yup.string().trim(),
+    }),
+  password_confirmation: yup
+    .string()
+    .trim()
+    .when('old_password', {
+      is: (val: string) => {
+        return !!val.length;
+      },
+      then: yup.string().trim().required('Campo obrigátorio'),
+      otherwise: yup.string().trim(),
     })
     .oneOf([yup.ref('password')], 'Confirmação incorreta'),
 });
