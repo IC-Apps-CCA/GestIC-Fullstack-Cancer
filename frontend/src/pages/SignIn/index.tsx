@@ -15,7 +15,7 @@ import { DarkBox, LightBox, LightContainer, DarkContainer, DarkSecondaryText, Li
 
 const schema = yup.object().shape({
   email: yup.string().email('Digite um email válido').required('Email é obrigatório'),
-  password: yup.string().required('Senha é obrigatória'),
+  password: yup.string().trim().required('Senha é obrigatória'),
 });
 
 type SignInFormInputs = {

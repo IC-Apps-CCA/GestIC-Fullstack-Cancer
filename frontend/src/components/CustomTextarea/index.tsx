@@ -9,6 +9,7 @@ type Props = {
   errorMessage?: string;
   helperText?: string;
   size?: string;
+  resize: 'horizontal' | 'vertical' | 'none';
   rows?: number;
 };
 
@@ -18,6 +19,7 @@ const CustomTextarea = ({
   placeholder,
   rows = 6,
   size = 'md',
+  resize = 'none',
   ref,
   errorMessage,
   helperText,
@@ -26,7 +28,16 @@ const CustomTextarea = ({
   return (
     <FormControl isInvalid={!!errorMessage} errortext={errorMessage}>
       <FormLabel htmlFor={name}>{placeholder}</FormLabel>
-      <Textarea size={size} rows={rows} type={type} name={name} placeholder={placeholder} ref={ref} {...other} />
+      <Textarea
+        size={size}
+        rows={rows}
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        ref={ref}
+        resize={resize}
+        {...other}
+      />
       {errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
       {helperText && <FormHelperText>{helperText}</FormHelperText>}
     </FormControl>

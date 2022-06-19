@@ -19,10 +19,10 @@ import { DarkBox, LightBox, LightContainer, DarkContainer, DarkSecondaryText, Li
 
 
 const schema = yup.object().shape({
-  name: yup.string().required('Nome é obrigatório'),
-  surname: yup.string().required('Sobrenome é obrigatório'),
+  name: yup.string().trim().required('Nome é obrigatório'),
+  surname: yup.string().trim().required('Sobrenome é obrigatório'),
   email: yup.string().email('Digite um email válido').required('Email é obrigatório'),
-  password: yup.string().required('Senha é obrigatória'),
+  password: yup.string().trim().required('Senha é obrigatória'),
 });
 
 type SignUpFormInputs = {
@@ -48,25 +48,22 @@ const SignUp = () => {
   const { errors } = formState;
 
   const onSubmit = async ({ name, surname, email, password, title }: SignUpFormInputs) => {
-    console.log(profile);
     const dataForm = new FormData();
     const file = filesElement?.current?.files[0];
     dataForm.append('file', file);
-    console.log(file);
     try {
-      api
-        .post('/access/register', {
-          name: `${name} ${surname}`,
-          email,
-          password,
-          profile,
-          title,
-        })
-        .then(response => {
-          console.log(response.data.id);
-          dataForm.append('user_id', response.data.id);
-          api.post('/access/register/file', dataForm);
-        });
+      const { data } = await api.post('/access/register', {
+        name: `${name} ${surname}`,
+        email,
+        password,
+        profile,
+        title,
+      });
+
+      if (file) {
+        dataForm.append('user_id', data.id);
+        await api.post('/access/register/file', dataForm);
+      }
 
       toast({
         title: 'Cadastro realizado com sucesso',
@@ -146,7 +143,7 @@ const SignUp = () => {
               control={control}
               defaultValue=""
               render={({ field }) => (
-                <CustomInput {...field} type="text" placeholder="Titulo" errorMessage={errors?.surname?.message} />
+                <CustomInput {...field} type="text" placeholder="Título" errorMessage={errors?.title?.message} />
               )}
             />
 
@@ -156,7 +153,7 @@ const SignUp = () => {
               defaultValue=""
               render={({ field }) => (
                 <FormControl isInvalid={!!errors?.profile?.message} errortext={errors?.profile?.message}>
-                  <FormLabel htmlFor={field.name}>Profile</FormLabel>
+                  <FormLabel htmlFor={field.name}>Perfil</FormLabel>
                   <select value={profile} onChange={event => setProfile(event.target.value)}>
                     <option value="Estudante">Estudante</option>
                     <option value="Monitor">Monitor</option>

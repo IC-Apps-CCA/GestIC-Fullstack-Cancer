@@ -10,9 +10,9 @@ import { Page } from '../../../components/Page';
 import { CustomInput } from '../../../components/CustomInput';
 
 const schema = yup.object().shape({
-  weekday: yup.string().required('Campo obrigatório'),
-  start_time: yup.string().required('Campo obrigatório'),
-  end_time: yup.string().required('Campo obrigatório'),
+  weekday: yup.string().trim().required('Campo obrigatório'),
+  start_time: yup.string().trim().required('Campo obrigatório'),
+  end_time: yup.string().trim().required('Campo obrigatório'),
 });
 
 type OfferTimetableFormInputs = {

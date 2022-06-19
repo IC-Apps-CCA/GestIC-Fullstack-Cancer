@@ -72,10 +72,8 @@ const AuthProvider: React.FC = ({ children }) => {
     function err(error) {
       console.log(error.response);
       // Any status codes that falls outside the range of 2xx cause this function to trigger
-      if (error.response && error.response.data) {
-        /*eslint no-alert: "off"*/
-        alert('Token Inválido. Realize o login novamente.');
-        if (error.response.data.auth === false) signOut();
+      if (error.response?.data?.auth === false) {
+        signOut();
       }
 
       return Promise.reject(error);
