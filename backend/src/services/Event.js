@@ -12,7 +12,7 @@ class Event extends Service {
         if (start > end) throw new Error("Event start > end.");
     }
 
-    async insert({ token, ownerId, start, end, title, description }) {
+    async insert({ token, ownerId, start, end, title, content }) {
         try {
             await super.insert({ token });
 
@@ -26,7 +26,7 @@ class Event extends Service {
                 start: startDate,
                 end: endDate,
                 title,
-                description,
+                content,
             });
             return event;
         } catch (err) {

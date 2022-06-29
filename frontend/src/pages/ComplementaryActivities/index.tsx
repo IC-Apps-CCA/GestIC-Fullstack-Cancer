@@ -15,12 +15,12 @@ import { api } from '../../services/api';
 import { useAuth } from '../../providers/AuthProvider';
 
 const schema = yup.object().shape({
-  name: yup.string().required('Nome é obrigatório'),
-  description: yup.string().required('Description é obrigatório'),
-  group: yup.string().required('Grupo é obrigatório'),
-  hours: yup.string().required('Horas é obrigatório'),
-  start: yup.string().required('Início de Atividades é obrigatório'),
-  end: yup.string().required('Término de Atividades é obrigatório'),
+  name: yup.string().trim().required('Nome é obrigatório'),
+  description: yup.string().trim().required('Description é obrigatório'),
+  group: yup.string().trim().required('Grupo é obrigatório'),
+  hours: yup.string().trim().required('Horas é obrigatório'),
+  start: yup.string().trim().required('Início de Atividades é obrigatório'),
+  end: yup.string().trim().required('Término de Atividades é obrigatório'),
 });
 
 type complementaryInputs = {
@@ -47,9 +47,6 @@ const ComplementaryActivities = () => {
 
   const { user } = useAuth();
 
-  //
-
-  //
 
   const onSubmit = async ({ name, description, group, hours, start, end }: complementaryInputs) => {
     try {

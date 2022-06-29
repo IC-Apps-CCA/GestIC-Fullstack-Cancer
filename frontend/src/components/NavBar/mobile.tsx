@@ -28,15 +28,15 @@ export const NavBarMobile = () => {
       justifyContent="space-between"
       columns={[null, null, 2]}
       w="100%"
-      bg="teal"
+      bg="#192A51"
       zIndex="5"
-      color="white"
+      color="#F5E6E8"
       p={4}
       gridTemplateColumns="0.5fr 1fr"
       alignItems="center"
       position="fixed"
     >
-      {/* <Box w="100%" bg="teal" zIndex="3" color="white" p={4} position="fixed"> */}
+      {/* <Box w="100%" bg="#192A51" zIndex="3" color="#F5E6E8" p={4} position="fixed"> */}
       {/* <Flex gridGap={3}>
         <Box>GestIC</Box>
         <Box>
@@ -63,7 +63,7 @@ export const NavBarMobile = () => {
         </Link>
         <Drawer isOpen={isOpen} placement="right" onClose={onClose} initialFocusRef={btnRef} size="md">
           <DrawerOverlay>
-            <DrawerContent bg="teal" color="white">
+            <DrawerContent bg="#192A51" color="#F5E6E8">
               <DrawerCloseButton top={8} right={4} fontSize="1rem" />
               <DrawerHeader pt={6}>
                 <Box top={8} position="absolute">
@@ -91,7 +91,7 @@ export const NavBarMobile = () => {
                     <Link href="/informacoes-uteis">Informações Úteis</Link>
                   </Box>
                   <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
-                    <Link color="black" href="/calendario">
+                    <Link color="#F5E6E8" href="/calendario">
                       Calendário
                     </Link>
                   </Box>
@@ -99,7 +99,7 @@ export const NavBarMobile = () => {
                     <Link href="/informativos">Informativos</Link>
                   </Box>
                   <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
-                    <Link color="black" href="/projetos-ativos">
+                    <Link color="#F5E6E8" href="/projetos-ativos">
                       Projetos Ativos
                     </Link>
                   </Box>
@@ -107,7 +107,7 @@ export const NavBarMobile = () => {
                     <Link href="/grupos-de-pesquisa">Grupos de Pesquisa</Link>
                   </Box>
                   <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
-                    <Link color="black" href="/ofertas-disciplinas">
+                    <Link color="#F5E6E8" href="/ofertas-disciplinas">
                       Ofertas de Disciplina
                     </Link>
                   </Box>

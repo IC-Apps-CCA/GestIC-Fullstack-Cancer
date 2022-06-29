@@ -86,10 +86,10 @@ const InformativeItemPage = () => {
       <Box p={8} pt={isLargerThan766 ? 10 : 8}>
         {!(Object.values(informative).length > 0) ? (
           <Center flexDirection="column">
-            <Heading color="teal" textAlign="center" mb={6}>
+            <Heading color="#192A51" textAlign="center" mb={6}>
               Informativo
             </Heading>
-            {isLoading ? <Spinner color="teal" size="xl" /> : <Text>Não há informativo com esse id.</Text>}
+            {isLoading ? <Spinner color="#192A51" size="xl" /> : <Text>Não há informativo com esse id.</Text>}
           </Center>
         ) : (
           <>
@@ -104,7 +104,7 @@ const InformativeItemPage = () => {
               margin="auto"
             >
               <Box display="flex" w="100%" mb={4} alignItems="center" justifyContent="center">
-                <Heading color="teal" textAlign="center" mr={2}>
+                <Heading color="#192A51" textAlign="center" mr={2}>
                   Informativo
                 </Heading>
               </Box>
@@ -152,7 +152,7 @@ export const InformativeItem = ({ informative, clickToRemove = () => {}, withAct
   return (
     <Box mt={4} mb={8}>
       <Box mb={3} display="flex" alignItems="center" justifyContent="space-between">
-        <Heading color="teal" onClick={() => history.push(`informativos/show/${informative.id}`)}>
+        <Heading color="#192A51" onClick={() => history.push(`informativos/show/${informative.id}`)}>
           <Link>{informative.title}</Link>
         </Heading>
         {user && withActions && (

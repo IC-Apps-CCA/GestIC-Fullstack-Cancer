@@ -11,12 +11,10 @@ import {
   Link,
   useMediaQuery,
 } from '@chakra-ui/react';
-import { useHistory } from 'react-router-dom';
 import { Page } from '../../../components/Page';
 
 const UsefulInformationPage = () => {
   const [isSmallerThan766] = useMediaQuery('(max-width: 766px)');
-  const history = useHistory();
 
   return (
     <Page>

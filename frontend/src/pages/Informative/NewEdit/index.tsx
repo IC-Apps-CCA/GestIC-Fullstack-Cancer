@@ -11,8 +11,8 @@ import { CustomInput } from '../../../components/CustomInput';
 import { CustomTextarea } from '../../../components/CustomTextarea';
 
 const schema = yup.object().shape({
-  title: yup.string().required('Campo obrigatório'),
-  content: yup.string().required('Campo obrigatório'),
+  title: yup.string().trim().required('Campo obrigatório'),
+  content: yup.string().trim().required('Campo obrigatório'),
 });
 
 type InformativeFormInputs = {

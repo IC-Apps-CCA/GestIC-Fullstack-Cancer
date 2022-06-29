@@ -168,7 +168,6 @@ export const NavBarDesktop = () => {
             <Link onClick={toggleTheme} _hover={{ textDecoration: 'none' }} m={2}>
               <Button color={theme === "light" ? "teal" : "black"}
                 background={theme === "light" ? "white" : "teal"}
-
               >☾</Button>
             </Link>
           </Box>

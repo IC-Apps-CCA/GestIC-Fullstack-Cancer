@@ -8,6 +8,7 @@ import Informative from '../../components/Informative';
 import { Page } from '../../components/Page';
 import { DarkBox_1, LightBox_1, LightBox_2 } from './theme';
 import { useState, useEffect } from 'react';
+import Helmet from 'react-helmet';
 
 const Dashboard = () => {
   const [isLargerThan766] = useMediaQuery('(max-width: 766px)');
@@ -26,7 +27,6 @@ const Dashboard = () => {
   }, []);
 
   return (
-
     <Page
     >
 
@@ -45,8 +45,8 @@ const Dashboard = () => {
                   </Heading>
                 </Box>
               </Link>
-              <Link color="white" href="/calendario" _focus={{ boxShadow: 'none' }}>
-                <Box mb={2} p="1px" bgColor="teal">
+              <Link style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}} href="/calendario" _focus={{ boxShadow: 'none' }}>
+                <Box mb={2} p="1px" bgColor="#192A51">
                   <Box
                     style={LightBox_1}
 
@@ -69,8 +69,8 @@ const Dashboard = () => {
                   </Heading>
                 </Box>
               </Link>
-              <Link color="white" href="/grupos-de-pesquisa" _focus={{ boxShadow: 'none' }}>
-                <Box mb={2} p="1px" bgColor="teal">
+              <Link style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}}  href="/grupos-de-pesquisa" _focus={{ boxShadow: 'none' }}>
+                <Box mb={2} p="1px" bgColor="#192A51">
                   <Box
                     style={LightBox_1}
                   >
@@ -91,8 +91,8 @@ const Dashboard = () => {
                   </Heading>
                 </Box>
               </Link>
-              <Link color="white" href="/complementary-activities/list" _focus={{ boxShadow: 'none' }}>
-                <Box mb={2} p="1px" bgColor="teal">
+              <Link style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}}  href="/complementary-activities/list" _focus={{ boxShadow: 'none' }}>
+                <Box mb={2} p="1px" bgColor="#192A51">
                   <Box
                     style={LightBox_1}
                   >
@@ -115,7 +115,8 @@ const Dashboard = () => {
           )}
         </SimpleGrid>
       </Box>
-    </Page>
+    </Page >
+
   );
 };
 
