@@ -140,7 +140,7 @@ export const NavBarDesktop = () => {
           </Heading>
         </Flex>
         {user && user.id !== '' ? (
-          <Box color="#192A51" zIndex="2">
+          <Box color="teal" zIndex="2">
             <Menu>
               <MenuButton as={Button} rightIcon={<BiChevronDown />}>
                 {user.name}
@@ -160,15 +160,14 @@ export const NavBarDesktop = () => {
 
           <Box>
             <Link href="/login" _hover={{ textDecoration: 'none' }} m={2}>
-              <Button color={theme === "light" ? "#192A51" : "black"}
-                background={theme === "light" ? "#F5E6E8" : "white"}
+              <Button color={theme === "light" ? "teal" : "black"}
+                background={theme === "light" ? "white" : "teal"}
               >Login</Button>
             </Link>
 
             <Link onClick={toggleTheme} _hover={{ textDecoration: 'none' }} m={2}>
-              <Button color={theme === "light" ? "#192A51" : "black"}
-                background={theme === "light" ? "#F5E6E8" : "white"}
-
+              <Button color={theme === "light" ? "teal" : "black"}
+                background={theme === "light" ? "white" : "teal"}
               >☾</Button>
             </Link>
           </Box>

@@ -27,21 +27,15 @@ const Dashboard = () => {
   }, []);
 
   return (
-
-
     <Page
-
     >
 
-      <Box textAlign="center" fontSize="xl" p={8}
-        color={theme === "light" ? 'black' : '#192A51'}
-
-      >
+      <Box textAlign="center" fontSize="xl" p={8}>
         <SimpleGrid columns={[1, null, 2]} minH="100%" spacing={8} justifyItems="center">
           <Informative />
           {!isLargerThan766 && (
             <Box w="70%">
-              <Link style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}} href="/informacoes-uteis" _focus={{ boxShadow: 'none' }}>
+              <Link color="teal" href="/informacoes-uteis" _focus={{ boxShadow: 'none' }}>
                 <Box
                   style={theme === "light" ? LightBox_2 : DarkBox_1}
                 >
@@ -64,7 +58,7 @@ const Dashboard = () => {
                   </Box>
                 </Box>
               </Link>
-              <Link style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}}  href="/projetos-ativos" _focus={{ boxShadow: 'none' }}>
+              <Link color="teal" href="/projetos-ativos" _focus={{ boxShadow: 'none' }}>
                 <Box
                   style={theme === "light" ? LightBox_2 : DarkBox_1}
 
@@ -87,7 +81,7 @@ const Dashboard = () => {
                   </Box>
                 </Box>
               </Link>
-              <Link style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}}  href="/ofertas-disciplinas" _focus={{ boxShadow: 'none' }}>
+              <Link color="teal" href="/ofertas-disciplinas" _focus={{ boxShadow: 'none' }}>
                 <Box
                   style={theme === "light" ? LightBox_2 : DarkBox_1}
                 >
@@ -109,7 +103,7 @@ const Dashboard = () => {
                   </Box>
                 </Box>
               </Link>
-              <Link style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}}  href="/montar-horario" _focus={{ boxShadow: 'none' }}>
+              <Link color="teal" href="/montar-horario" _focus={{ boxShadow: 'none' }}>
                 <Box style={theme === "light" ? LightBox_2 : DarkBox_1}>
                   <Icon as={AiFillSchedule} fontSize="2rem" mr={2} />
                   <Heading fontSize="md" textTransform="uppercase">
