@@ -116,7 +116,7 @@ const SignUp = () => {
               control={control}
               defaultValue=""
               render={({ field }) => (
-                <CustomInput {...field} type="text" placeholder="Titulo" errorMessage={errors?.surname?.message} />
+                <CustomInput {...field} type="text" placeholder="Titulo" errorMessage={errors?.title?.message} />
               )}
             />
 
