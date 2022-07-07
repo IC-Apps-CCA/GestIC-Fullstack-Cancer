@@ -34,17 +34,15 @@ const CalendarPage = () => {
   };
   const [time, setTime] = React.useState(Date.now());
 
-  let theme = window.localStorage.getItem("theme");
+  let theme = window.localStorage.getItem('theme');
 
   React.useEffect(() => {
     const interval = setInterval(() => setTime(Date.now()), 100);
     return () => {
-      theme = window.localStorage.getItem("theme");
+      theme = window.localStorage.getItem('theme');
       clearInterval(interval);
     };
-
   }, []);
-
 
   React.useEffect(() => {
     getEventList();
@@ -53,7 +51,7 @@ const CalendarPage = () => {
   return (
     <Page>
       <Box p={8} pt={isLargerThan766 ? 10 : 8} mb={16}>
-        <Heading style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}} textAlign="center" mr={2}>
+        <Heading style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} textAlign="center" mr={2}>
           Calendário
         </Heading>
         {user && (
@@ -73,10 +71,14 @@ const CalendarPage = () => {
             events={eventList}
             startAccessor="start"
             endAccessor="end"
-            style={{height: 500, color: theme === "light" ? '#192A51' : '#192A51', backgroundColor: theme === "light" ? 'white' : 'white  '}}
+            style={{
+              height: 500,
+              color: theme === 'light' ? '#192A51' : '#192A51',
+              backgroundColor: theme === 'light' ? 'white' : 'white  ',
+            }}
           />
         </Box>
-        <Box mt={8} style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}}>
+        <Box mt={8} style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }}>
           <Link href="/eventos">Ver lista e pesquisar por todos os eventos</Link>
         </Box>
       </Box>

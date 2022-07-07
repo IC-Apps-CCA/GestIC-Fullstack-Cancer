@@ -9,9 +9,9 @@ export const LightContainer = {
   height: '100vh',
   width: '100vw',
   background: '#192A51',
-  border: "1px",
+  border: '1px',
   borderColor: 'white',
-}
+};
 
 export const LightBox = {
   display: 'flex',
@@ -24,9 +24,8 @@ export const LightBox = {
   padding: '20px',
   margin: '20px',
   borderRadius: '10px',
-  color: '#192A51'
-}
-
+  color: '#192A51',
+};
 
 export const DarkContainer = {
   display: 'flex',
@@ -37,7 +36,7 @@ export const DarkContainer = {
   width: '100vw',
 
   background: '#121212',
-}
+};
 
 export const DarkBox = {
   display: 'flex',
@@ -52,13 +51,12 @@ export const DarkBox = {
   padding: '20px',
   margin: '0px',
   borderRadius: '10px',
-}
-
+};
 
 export const DarkSecondaryText = {
-  color: 'white'
-}
+  color: 'white',
+};
 
 export const LightSecondaryText = {
-  color: '#192A51'
-}
+  color: '#192A51',
+};

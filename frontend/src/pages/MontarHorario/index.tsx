@@ -174,15 +174,14 @@ const MontarHorario = () => {
 
   const [time, setTime] = React.useState(Date.now());
 
-  let theme = window.localStorage.getItem("theme");
+  let theme = window.localStorage.getItem('theme');
 
   React.useEffect(() => {
     const interval = setInterval(() => setTime(Date.now()), 100);
     return () => {
-      theme = window.localStorage.getItem("theme");
+      theme = window.localStorage.getItem('theme');
       clearInterval(interval);
     };
-
   }, []);
 
   const handleChange = (event: { target: { value: string } }) => {
@@ -205,7 +204,7 @@ const MontarHorario = () => {
     <Page>
       <Box p={8}>
         <Box display="flex" w="100%" mb={4} alignItems="center" justifyContent={user ? 'space-between' : 'left'}>
-          <Heading style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}} textAlign="center" mr={2}>
+          <Heading style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} textAlign="center" mr={2}>
             Montar Horário
           </Heading>
           <Box display="flex" mb={4} alignItems="center" justifyContent="left">
@@ -215,7 +214,7 @@ const MontarHorario = () => {
           </Box>
         </Box>
         <Box minW="20%" w="25%" mb={5}>
-          <InputGroup style={{color: theme === "light" ? '#192A51' : '#192A51'}}>
+          <InputGroup style={{ color: theme === 'light' ? '#192A51' : '#192A51' }}>
             <Input placeholder="Buscar" bg="white" onChange={handleChange} />
             <InputRightElement>
               <BsSearch />
@@ -243,21 +242,21 @@ const MontarHorario = () => {
             </Text>
           </>
         ) : (
-          <Text display="flex" alignItems="center" justifyContent="center"
+          <Text
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
             style={theme === 'light' ? LightText : DarkText}
           >
-            {isLoading ? <Spinner style={{color: theme === "light" ? '#192A51' : '#F5E6E8'}} size="xl" /> : <Text
-              style={theme === 'light' ? LightText : DarkText}
-
-
-            >Não há disciplinas cadastradas</Text>}
+            {isLoading ? (
+              <Spinner style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} size="xl" />
+            ) : (
+              <Text style={theme === 'light' ? LightText : DarkText}>Não há disciplinas cadastradas</Text>
+            )}
           </Text>
         )}
         {disciplinesSelected.length ? (
-          <Text display="flex" alignItems="center" mb={1}
-            style={theme === 'light' ? LightText : DarkText}
-
-          >
+          <Text display="flex" alignItems="center" mb={1} style={theme === 'light' ? LightText : DarkText}>
             Remover
           </Text>
         ) : null}
@@ -277,12 +276,9 @@ const MontarHorario = () => {
         <Table variant="simple">
           <TableCaption>Horário de disciplinas</TableCaption>
           <Thead>
-            <Tr
-              style={theme === 'light' ? LightText : DarkText}
-
-            >
+            <Tr style={theme === 'light' ? LightText : DarkText}>
               <Th />
-              <Th style={theme === 'light' ? LightText : DarkText} >Segunda</Th>
+              <Th style={theme === 'light' ? LightText : DarkText}>Segunda</Th>
               <Th style={theme === 'light' ? LightText : DarkText}>Terça</Th>
               <Th style={theme === 'light' ? LightText : DarkText}>Quarta</Th>
               <Th style={theme === 'light' ? LightText : DarkText}>Quinta</Th>
@@ -293,11 +289,7 @@ const MontarHorario = () => {
             {table.map((row, idx) => {
               return (
                 <Tr key={idx}>
-                  <Td
-                    style={theme === 'light' ? LightText : DarkText}
-
-
-                  >{times[idx]}</Td>
+                  <Td style={theme === 'light' ? LightText : DarkText}>{times[idx]}</Td>
                   {row.map((col, idx) => {
                     return <Td key={idx}>{col}</Td>;
                   })}
