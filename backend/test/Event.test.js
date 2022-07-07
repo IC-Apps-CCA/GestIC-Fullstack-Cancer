@@ -47,7 +47,7 @@ describe('Testing event routes', () => {
         itemId = res.body.id;
     })
 
-    it('Should updata a event', async () => {
+    it('Should update a event', async () => {
         const res = await request(app)
             .put('/event')
             .send({
