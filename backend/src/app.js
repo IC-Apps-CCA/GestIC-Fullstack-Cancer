@@ -33,7 +33,7 @@ app.use('/complementary', routes.complementary);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 app.get('/', verifyJWT, (req, res) => {
-    res.send("Bem vindo a versão V0.0 do backend da aplicação GestIC - Taurus!");
+    res.send("Bem vindo a versão V0.0 do backend da aplicação GestIC - Cancer!");
 });
 
 module.exports = app;
