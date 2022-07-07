@@ -17,7 +17,7 @@ const schema = yup.object().shape({
 });
 
 type ResearchGroupsFormInputs = {
-  id?: string;
+  id: string;
   name: string;
   description: string;
   activities: string;
