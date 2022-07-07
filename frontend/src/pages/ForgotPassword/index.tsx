@@ -8,8 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { CustomInput } from '../../components/CustomInput';
 import { Page } from '../../components/Page';
-import { DarkBox, LightBox, LightContainer, DarkContainer, DarkSecondaryText, LightSecondaryText } from './styles'
-
+import { DarkBox, LightBox, LightContainer, DarkContainer, DarkSecondaryText, LightSecondaryText } from './styles';
 
 const schema = yup.object().shape({
   email: yup.string().email('Digite um email válido').required('Email é obrigatório'),
@@ -31,15 +30,14 @@ const ForgotPassword = () => {
 
   const [time, setTime] = React.useState(Date.now());
 
-  let theme = window.localStorage.getItem("theme");
+  let theme = window.localStorage.getItem('theme');
 
   React.useEffect(() => {
     const interval = setInterval(() => setTime(Date.now()), 100);
     return () => {
-      theme = window.localStorage.getItem("theme");
+      theme = window.localStorage.getItem('theme');
       clearInterval(interval);
     };
-
   }, []);
 
   const onSubmit = (data: ForgotPasswordFormInputs) => {
@@ -66,19 +64,8 @@ const ForgotPassword = () => {
 
   return (
     <Page>
-      <div
-        style={
-          theme === 'light' ? LightContainer : DarkContainer
-
-        }
-      >
-        <Box
-
-          style={
-            theme === 'light' ? LightBox : DarkBox
-
-          }
-        >
+      <div style={theme === 'light' ? LightContainer : DarkContainer}>
+        <Box style={theme === 'light' ? LightBox : DarkBox}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={2}>
               <Controller

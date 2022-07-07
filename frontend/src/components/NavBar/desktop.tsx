@@ -22,42 +22,36 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { BiChevronDown } from 'react-icons/bi';
-import { useAuth } from '../../providers/AuthProvider';
 import { useState, useEffect } from 'react';
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme, LightSimpleGrid, DarkSimpleGrid, DarkDrawerContent, LightDrawerContent } from "./theme";
+import { ThemeProvider } from 'styled-components';
+import { useAuth } from '../../providers/AuthProvider';
+import { lightTheme, darkTheme, LightSimpleGrid, DarkSimpleGrid, DarkDrawerContent, LightDrawerContent } from './theme';
 
 export const NavBarDesktop = () => {
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
   const btnRef = React.useRef();
   const { user, signOut } = useAuth();
 
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
-    if (theme === "light") {
-      window.localStorage.setItem("theme", "dark");
-      setTheme("dark");
+    if (theme === 'light') {
+      window.localStorage.setItem('theme', 'dark');
+      setTheme('dark');
     } else {
-      window.localStorage.setItem("theme", "light");
-      setTheme("light");
+      window.localStorage.setItem('theme', 'light');
+      setTheme('light');
     }
   };
 
   useEffect(() => {
-    const localTheme = window.localStorage.getItem("theme");
+    const localTheme = window.localStorage.getItem('theme');
     return localTheme && setTheme(localTheme);
   }, []);
 
   return (
-
-    <ThemeProvider
-
-      theme={theme === "light" ? lightTheme : darkTheme}
-    >
-
-      <SimpleGrid style={theme === "light" ? LightSimpleGrid : DarkSimpleGrid}>
-
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <SimpleGrid style={theme === 'light' ? LightSimpleGrid : DarkSimpleGrid}>
         <Box>
           <Flex alignItems="center">
             <Link fontSize="3xl" alignSelf="center" ref={btnRef} colorScheme="quaternary" onClick={onOpen}>
@@ -68,7 +62,7 @@ export const NavBarDesktop = () => {
           </Flex>
           <Drawer isOpen={isOpen} placement="left" onClose={onClose} initialFocusRef={btnRef} size="md">
             <DrawerOverlay>
-              <DrawerContent style={theme === "light" ? LightDrawerContent : DarkDrawerContent}>
+              <DrawerContent style={theme === 'light' ? LightDrawerContent : DarkDrawerContent}>
                 <DrawerCloseButton top={8} right={4} fontSize="1rem" />
                 <DrawerHeader pt={6}>
                   <Box top={8} position="absolute">
@@ -84,33 +78,24 @@ export const NavBarDesktop = () => {
                   py={12}
                   mt={5}
                 >
-                  <Box
-
-                  >
-
+                  <Box>
                     <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
                       <Link href="/informacoes-uteis">Informações Úteis</Link>
                     </Box>
                     <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
-                      <Link href="/calendario">
-                        Calendário
-                      </Link>
+                      <Link href="/calendario">Calendário</Link>
                     </Box>
                     <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
                       <Link href="/informativos">Informativos</Link>
                     </Box>
                     <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
-                      <Link href="/projetos-ativos">
-                        Projetos Ativos
-                      </Link>
+                      <Link href="/projetos-ativos">Projetos Ativos</Link>
                     </Box>
                     <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
                       <Link href="/grupos-de-pesquisa">Grupos de Pesquisa</Link>
                     </Box>
                     <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
-                      <Link href="/ofertas-disciplinas">
-                        Ofertas de Disciplina
-                      </Link>
+                      <Link href="/ofertas-disciplinas">Ofertas de Disciplina</Link>
                     </Box>
                   </Box>
                   {user && user.id !== '' ? (
@@ -157,25 +142,21 @@ export const NavBarDesktop = () => {
             </Menu>
           </Box>
         ) : (
-
           <Box>
             <Link href="/login" _hover={{ textDecoration: 'none' }} m={2}>
-              <Button color={theme === "light" ? "teal" : "black"}
-                background={theme === "light" ? "white" : "teal"}
-              >Login</Button>
+              <Button color={theme === 'light' ? 'teal' : 'black'} background={theme === 'light' ? 'white' : 'teal'}>
+                Login
+              </Button>
             </Link>
 
             <Link onClick={toggleTheme} _hover={{ textDecoration: 'none' }} m={2}>
-              <Button color={theme === "light" ? "teal" : "black"}
-                background={theme === "light" ? "white" : "teal"}
-              >☾</Button>
+              <Button color={theme === 'light' ? 'teal' : 'black'} background={theme === 'light' ? 'white' : 'teal'}>
+                ☾
+              </Button>
             </Link>
           </Box>
-
         )}
-
       </SimpleGrid>
-
     </ThemeProvider>
   );
 };

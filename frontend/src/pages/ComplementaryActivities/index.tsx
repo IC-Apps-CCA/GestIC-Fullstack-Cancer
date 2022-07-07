@@ -47,7 +47,6 @@ const ComplementaryActivities = () => {
 
   const { user } = useAuth();
 
-
   const onSubmit = async ({ name, description, group, hours, start, end }: complementaryInputs) => {
     try {
       await api.post('/complementary', {
