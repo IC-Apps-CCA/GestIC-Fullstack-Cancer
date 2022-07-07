@@ -85,11 +85,11 @@ const GruposPesquisaNewEdit = () => {
     <Page>
       <Box p={8} pt={isLargerThan766 ? 10 : 8} maxW={isLargerThan766 ? '100%' : '60vw'}>
         <Heading color="teal" mb={6}>
-          {id ? 'Editar' : 'Novo'} informativo
+          {id ? 'Editar' : 'Novo'} Grupo de Pesquisa
         </Heading>
         {isLoading && id ? (
           <Box textAlign={isLoading ? 'center' : 'inherit'}>
-            {isLoading ? <Spinner color="teal" size="xl" /> : <Text>Não há informativo com esse id.</Text>}
+            {isLoading ? <Spinner color="teal" size="xl" /> : <Text>Não há Grupos com esse id.</Text>}
           </Box>
         ) : (
           <form onSubmit={handleSubmit(onSubmit)}>
