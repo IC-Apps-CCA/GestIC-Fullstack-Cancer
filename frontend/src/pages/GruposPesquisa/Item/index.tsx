@@ -61,7 +61,7 @@ export const ResearchGroupItem = ({
   return (
     <Box mt={4} mb={8}>
       <Box mb={3} display="flex" alignItems="center" justifyContent="space-between">
-        <Heading>{researchGroup.name}</Heading>
+        <Heading style={{color: 'teal'}}>{researchGroup.name}</Heading>
         {user && withActions && (
           <Box>
             <IconButton
