@@ -25,8 +25,10 @@ export const LightBox_2 = {
 export const DarkBox_1 = {
   padding: '16px',
   display: 'flex',
-  background: '#121212',
+  background: '#192A51',
   alignItems: 'center',
   justifyContent: 'center',
   marginBottom: '6px',
+  border: '3px',
+  borderRadius: '6px'
 };
