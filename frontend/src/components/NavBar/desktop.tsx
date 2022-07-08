@@ -42,6 +42,7 @@ export const NavBarDesktop = () => {
       window.localStorage.setItem('theme', 'light');
       setTheme('light');
     }
+    window.location.reload()
   };
 
   useEffect(() => {
