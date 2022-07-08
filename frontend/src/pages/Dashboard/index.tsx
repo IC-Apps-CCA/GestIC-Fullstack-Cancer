@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, SimpleGrid, Icon, Heading, Link, useMediaQuery } from '@chakra-ui/react';
-import { AiOutlineFundProjectionScreen, AiOutlineUnorderedList, AiFillSchedule } from 'react-icons/ai';
+import { AiOutlineFundProjectionScreen, AiOutlineUnorderedList, AiFillSchedule, AiFillAlert, AiFillFund} from 'react-icons/ai';
 import { FaRegCalendarAlt } from 'react-icons/fa';
 import { BiGroup } from 'react-icons/bi';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
@@ -39,12 +39,12 @@ const Dashboard = () => {
                 </Box>
               </Link>
               <Link
-                style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }}
+                style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' } }
                 href="/calendario"
                 _focus={{ boxShadow: 'none' }}
               >
-                <Box mb={2} p="1px" bgColor="#192A51">
-                  <Box style={LightBox_1}>
+                <Box  bgColor="#192A51">
+                  <Box style={theme === 'light' ? LightBox_1 : DarkBox_1}>
                     <Icon as={FaRegCalendarAlt} fontSize="1.6rem" mr={3} />
                     <Heading fontSize="md" textTransform="uppercase">
                       Calendário
@@ -52,8 +52,16 @@ const Dashboard = () => {
                   </Box>
                 </Box>
               </Link>
-              <Link color="teal" href="/projetos-ativos" _focus={{ boxShadow: 'none' }}>
+              <Link color="teal" href="/informativos" _focus={{ boxShadow: 'none' }}>
                 <Box style={theme === 'light' ? LightBox_2 : DarkBox_1}>
+                  <Icon as={AiFillAlert} fontSize="2rem" mr={2} />
+                  <Heading fontSize="md" textTransform="uppercase">
+                    Informativos
+                  </Heading>
+                </Box>
+              </Link>
+              <Link style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' } } href="/projetos-ativos" _focus={{ boxShadow: 'none' }}>
+                <Box style={theme === 'light' ? LightBox_1 : DarkBox_1}>
                   <Icon as={AiOutlineFundProjectionScreen} fontSize="2rem" mr={2} />
                   <Heading fontSize="md" textTransform="uppercase">
                     Projetos Ativos
@@ -61,12 +69,12 @@ const Dashboard = () => {
                 </Box>
               </Link>
               <Link
-                style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }}
+                color="teal"
                 href="/grupos-de-pesquisa"
                 _focus={{ boxShadow: 'none' }}
               >
-                <Box mb={2} p="1px" bgColor="#192A51">
-                  <Box style={LightBox_1}>
+                <Box  bgColor="#192A51">
+                  <Box style={theme === 'light' ? LightBox_2 : DarkBox_1}>
                     <Icon as={BiGroup} fontSize="2rem" mr={2} />
                     <Heading fontSize="md" textTransform="uppercase">
                       Grupos de Pesquisa
@@ -74,8 +82,8 @@ const Dashboard = () => {
                   </Box>
                 </Box>
               </Link>
-              <Link color="teal" href="/ofertas-disciplinas" _focus={{ boxShadow: 'none' }}>
-                <Box style={theme === 'light' ? LightBox_2 : DarkBox_1}>
+              <Link  style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' } } href="/ofertas-disciplinas" _focus={{ boxShadow: 'none' }}>
+                <Box style={theme === 'light' ? LightBox_1 : DarkBox_1}>
                   <Icon as={AiOutlineUnorderedList} fontSize="2rem" mr={2} />
                   <Heading fontSize="md" textTransform="uppercase">
                     Ofertas de disciplina
@@ -87,17 +95,17 @@ const Dashboard = () => {
                 href="/complementary-activities/list"
                 _focus={{ boxShadow: 'none' }}
               >
-                <Box mb={2} p="1px" bgColor="#192A51">
-                  <Box style={LightBox_1}>
-                    <Icon as={AiOutlineUnorderedList} fontSize="2rem" mr={2} />
-                    <Heading fontSize="md" textTransform="uppercase">
+                <Box  bgColor="#192A51">
+                  <Box  style={theme === 'light' ? LightBox_2 : DarkBox_1}>
+                    <Icon  color="teal" as={AiFillFund} fontSize="2rem" mr={2} />
+                    <Heading  color="teal"  fontSize="md" textTransform="uppercase">
                       Atividades Complementares
                     </Heading>
                   </Box>
                 </Box>
               </Link>
-              <Link color="teal" href="/montar-horario" _focus={{ boxShadow: 'none' }}>
-                <Box style={theme === 'light' ? LightBox_2 : DarkBox_1}>
+              <Link style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' } }  href="/montar-horario" _focus={{ boxShadow: 'none' }}>
+                <Box style={theme === 'light' ? LightBox_1 : DarkBox_1}>
                   <Icon as={AiFillSchedule} fontSize="2rem" mr={2} />
                   <Heading fontSize="md" textTransform="uppercase">
                     Montar Horário
