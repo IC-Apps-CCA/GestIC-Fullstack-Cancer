@@ -110,36 +110,36 @@ const EmailListPage = () => {
             <></>
           )}
         </Box>
-        </Box>
-        <Box color="#192A51">
-              <Text fontWeight="bolder" mr={2}>
-                <Link href="https://ic.ufal.br/pt-br/institucional/docentes"}>Docentes</Link>
-              </Text>
-        </Box>
       </Box>
-        /*<Box color="#192A51">
-          {emailListSearch.length ? (
-            <>
-              <Heading size="md" my={4}>
-                Docentes
-              </Heading>
-              {emailListSearch.map(currentItem => (
-                <>
-                  <Flex flexDirection={isSmallerThan766 ? 'column' : 'row'}>
-                    <Text fontWeight="bolder" mr={2}>
-                      {currentItem.name}:
-                    </Text>
-                    <Link href={`mailto:${currentItem.email}`}>{currentItem.email}</Link>
-                  </Flex>
-                </>
-              ))}
-            </>
-          ) : (
-            <Box>Não há algum pessoa ou email com esse nome.</Box>
-          )}
-        </Box>
-      </Box>*/
-    </Page>
+      <Box color="#192A51">
+        <Text fontWeight="bolder" mr={2}>
+          <Link href="https://ic.ufal.br/pt-br/institucional/docentes">Docentes</Link>
+        </Text>
+      </Box>
+
+      {/* <Box color="#192A51">
+        {emailListSearch.length ? (
+          <>
+            <Heading size="md" my={4}>
+              Docentes
+            </Heading>
+            {emailListSearch.map(currentItem => (
+              <>
+                <Flex flexDirection={isSmallerThan766 ? 'column' : 'row'}>
+                  <Text fontWeight="bolder" mr={2}>
+                    {currentItem.name}:
+                  </Text>
+                  <Link href={`mailto:${currentItem.email}`}>{currentItem.email}</Link>
+                </Flex>
+              </>
+            ))}
+          </>
+        ) : (
+          <Box>Não há algum pessoa ou email com esse nome.</Box>
+        )}
+      </Box>
+    </Box> */}
+    </Page >
   );
 };
 

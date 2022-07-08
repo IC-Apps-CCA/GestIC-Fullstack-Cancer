@@ -98,6 +98,7 @@ export const NavBarDesktop = () => {
                       <Link href="/ofertas-disciplinas">Ofertas de Disciplina</Link>
                     </Box>
                   </Box>
+                  {/* user && user.id !== ''  */}
                   {user && user.id !== '' ? (
                     <Box>
                       <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
@@ -106,13 +107,28 @@ export const NavBarDesktop = () => {
                       <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
                         <Link onClick={signOut}>Sair</Link>
                       </Box>
+
+                      <Link onClick={toggleTheme} _hover={{ textDecoration: 'none' }} m={2}>
+                        <Button color={theme === 'light' ? 'teal' : 'black'} background={theme === 'light' ? 'white' : 'teal'}>
+                          ☾
+                        </Button>
+                      </Link>
                     </Box>
+
                   ) : (
-                    <Link href="/login">
-                      <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
-                        Login
-                      </Box>
-                    </Link>
+                    <Box>
+                      <Link href="/login" _hover={{ textDecoration: 'none' }} m={2}>
+                        <Button color={theme === 'light' ? 'teal' : 'black'} background={theme === 'light' ? 'white' : 'teal'}>
+                          Login
+                        </Button>
+                      </Link>
+
+                      <Link onClick={toggleTheme} _hover={{ textDecoration: 'none' }} m={2}>
+                        <Button color={theme === 'light' ? 'teal' : 'black'} background={theme === 'light' ? 'white' : 'teal'}>
+                          ☾
+                        </Button>
+                      </Link>
+                    </Box>
                   )}
                 </DrawerBody>
               </DrawerContent>
@@ -127,11 +143,12 @@ export const NavBarDesktop = () => {
         {user && user.id !== '' ? (
           <Box color="teal" zIndex="2">
             <Menu>
-              <MenuButton as={Button} rightIcon={<BiChevronDown />}>
+
+              <MenuButton as={Button} rightIcon={<BiChevronDown />} color={theme === 'light' ? 'teal' : 'black'} background={theme === 'light' ? 'white' : 'teal'}>
                 {user.name}
               </MenuButton>
               <MenuList>
-                <MenuItem>
+                <MenuItem color={theme === 'light' ? 'teal' : 'black'} background={theme === 'light' ? 'white' : 'teal'}>
                   <Link href="/perfil">
                     <span>Ir para perfil</span>
                   </Link>
@@ -139,6 +156,11 @@ export const NavBarDesktop = () => {
                 <MenuDivider />
                 <MenuItem onClick={signOut}>Sair</MenuItem>
               </MenuList>
+              <Link onClick={toggleTheme} _hover={{ textDecoration: 'none' }} m={2}>
+                <Button color={theme === 'light' ? 'teal' : 'black'} background={theme === 'light' ? 'white' : 'teal'}>
+                  ☾
+                </Button>
+              </Link>
             </Menu>
           </Box>
         ) : (

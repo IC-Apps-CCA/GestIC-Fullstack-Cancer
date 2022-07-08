@@ -106,7 +106,7 @@ const DisciplineOffer = () => {
           </Box>
 
           <Box minW="20%" w="25%" mb={user ? 6 : 0}>
-            <InputGroup style={{ color: theme === 'light' ? '#192A51' : '#192A51' }}>
+            <InputGroup style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }}>
               <Input placeholder="Buscar" bg="white" onChange={handleChange} />
               <InputRightElement>
                 <BsSearch />
@@ -150,17 +150,23 @@ const DisciplineOffer = () => {
                 return (
                   <Link key={dicipline.id} as={Tr} href={`ofertas-disciplinas/show/${dicipline.id}`}>
                     <Td>
-                      <Link display="block" href={`ofertas-disciplinas/show/${dicipline.id}`}>
+                      <Link
+                        style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }}
+                        display="block" href={`ofertas-disciplinas/show/${dicipline.id}`}>
                         {dicipline.code}
                       </Link>
                     </Td>
                     <Td>
-                      <Link display="block" href={`ofertas-disciplinas/show/${dicipline.id}`}>
+                      <Link
+                        style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }}
+                        display="block" href={`ofertas-disciplinas/show/${dicipline.id}`}>
                         {dicipline.name}
                       </Link>
                     </Td>
                     <Td>
-                      <Link display="block" href={`ofertas-disciplinas/show/${dicipline.id}`}>
+                      <Link
+                        style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }}
+                        display="block" href={`ofertas-disciplinas/show/${dicipline.id}`}>
                         {dicipline.codeClassroom}
                       </Link>
                     </Td>

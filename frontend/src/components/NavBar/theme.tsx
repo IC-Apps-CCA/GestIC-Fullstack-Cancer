@@ -18,7 +18,7 @@ export const DarkSimpleGrid = {
   display: 'flex',
   justifyContent: 'space-between',
   width: '100%',
-  background: '#121212',
+  background: '#778899',
   color: 'teal',
   padding: '4px',
   gridTemplateColumns: '0.5fr 1fr',

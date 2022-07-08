@@ -37,6 +37,23 @@ const InformativeItemPage = () => {
   const onClose = () => setIsOpen(false);
   const cancelRef = useRef();
 
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      window.localStorage.setItem('theme', 'dark');
+      setTheme('dark');
+    } else {
+      window.localStorage.setItem('theme', 'light');
+      setTheme('light');
+    }
+  };
+
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem('theme');
+    return localTheme && setTheme(localTheme);
+  }, []);
+
   const getInformative = async () => {
     try {
       const { data } = await api.get(`/informative/${id}`);
@@ -86,10 +103,10 @@ const InformativeItemPage = () => {
       <Box p={8} pt={isLargerThan766 ? 10 : 8}>
         {!(Object.values(informative).length > 0) ? (
           <Center flexDirection="column">
-            <Heading color="#192A51" textAlign="center" mb={6}>
+            <Heading style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} textAlign="center" mb={6}>
               Informativo
             </Heading>
-            {isLoading ? <Spinner color="#192A51" size="xl" /> : <Text>Não há informativo com esse id.</Text>}
+            {isLoading ? <Spinner style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} size="xl" /> : <Text>Não há informativo com esse id.</Text>}
           </Center>
         ) : (
           <>
@@ -104,7 +121,7 @@ const InformativeItemPage = () => {
               margin="auto"
             >
               <Box display="flex" w="100%" mb={4} alignItems="center" justifyContent="center">
-                <Heading color="#192A51" textAlign="center" mr={2}>
+                <Heading style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} textAlign="center" mr={2}>
                   Informativo
                 </Heading>
               </Box>
@@ -141,18 +158,34 @@ const InformativeItemPage = () => {
   );
 };
 
-export const InformativeItem = ({ informative, clickToRemove = () => {}, withActions = true }) => {
+export const InformativeItem = ({ informative, clickToRemove = () => { }, withActions = true }) => {
   const history = useHistory();
   const { user } = useAuth();
 
   const goToPage = (id: string | number) => {
     // history.push(`projetos-ativos/show/${id}`);
   };
+  const [theme, setTheme] = useState('light');
 
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      window.localStorage.setItem('theme', 'dark');
+      setTheme('dark');
+    } else {
+      window.localStorage.setItem('theme', 'light');
+      setTheme('light');
+    }
+  };
+
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem('theme');
+    return localTheme && setTheme(localTheme);
+  }, []);
   return (
     <Box mt={4} mb={8}>
       <Box mb={3} display="flex" alignItems="center" justifyContent="space-between">
-        <Heading color="#192A51" onClick={() => history.push(`informativos/show/${informative.id}`)}>
+
+        <Heading style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} onClick={() => history.push(`informativos/show/${informative.id}`)}>
           <Link>{informative.title}</Link>
         </Heading>
         {user && withActions && (
@@ -175,7 +208,7 @@ export const InformativeItem = ({ informative, clickToRemove = () => {}, withAct
           </Box>
         )}
       </Box>
-      <Box textAlign="left">{informative.content}</Box>
+      <Box color="white" textAlign="left">{informative.content}</Box>
     </Box>
   );
 };
