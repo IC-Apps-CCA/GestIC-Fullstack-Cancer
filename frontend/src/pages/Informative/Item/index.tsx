@@ -186,7 +186,7 @@ export const InformativeItem = ({ informative, clickToRemove = () => { }, withAc
       <Box mb={3} display="flex" alignItems="center" justifyContent="space-between">
 
         <Heading style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} onClick={() => history.push(`informativos/show/${informative.id}`)}>
-          <Link>{informative.title}</Link>
+          <Link style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} >{informative.title}</Link>
         </Heading>
         {user && withActions && (
           <Box>
@@ -208,7 +208,7 @@ export const InformativeItem = ({ informative, clickToRemove = () => { }, withAc
           </Box>
         )}
       </Box>
-      <Box textAlign="left">{informative.content}</Box>
+      <Box style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} textAlign="left">{informative.content}</Box>
     </Box>
   );
 };
