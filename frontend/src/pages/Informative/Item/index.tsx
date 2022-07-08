@@ -208,7 +208,7 @@ export const InformativeItem = ({ informative, clickToRemove = () => { }, withAc
           </Box>
         )}
       </Box>
-      <Box color="white" textAlign="left">{informative.content}</Box>
+      <Box textAlign="left">{informative.content}</Box>
     </Box>
   );
 };
