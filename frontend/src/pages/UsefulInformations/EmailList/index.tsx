@@ -113,7 +113,7 @@ const EmailListPage = () => {
         </Box>
         <Box color="#192A51">
               <Text fontWeight="bolder" mr={2}>
-                <Link href"=https://ic.ufal.br/pt-br/institucional/docentes"}>Docentes</Link>
+                <Link href="https://ic.ufal.br/pt-br/institucional/docentes"}>Docentes</Link>
               </Text>
         </Box>
       </Box>
