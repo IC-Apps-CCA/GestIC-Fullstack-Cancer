@@ -4,7 +4,8 @@ import { MdModeEdit } from 'react-icons/md';
 // import { useHistory } from 'react-router-dom';
 import { BsTrashFill } from 'react-icons/bs';
 import { useAuth } from '../../../providers/AuthProvider';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 interface projectData {
   id: string;
   userId: string;
