@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const uuid = require('uuid');
-    return await queryInterface.bulkInsert('complementary_activities', [
+    return await queryInterface.bulkInsert('informative', [
       {
         id: uuid.v4(),
         owner: 'f9584d5c-b11e-4148-8e12-e124782f9b9c',
@@ -20,6 +20,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return await queryInterface.bulkDelete('complementary_activities', null, {});
+    return await queryInterface.bulkDelete('informative', null, {});
   }
 };
