@@ -10,6 +10,7 @@ import {
   DrawerHeader,
   DrawerBody,
   SimpleGrid,
+  Button
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { useAuth } from '../../providers/AuthProvider';
@@ -18,6 +19,23 @@ export const NavBarMobile = () => {
   const { isOpen, onOpen, onClose, onToggle } = useDisclosure();
   const btnRef = React.useRef();
   const { user, signOut } = useAuth();
+  const [theme, setTheme] = React.useState('light');
+
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      window.localStorage.setItem('theme', 'dark');
+      setTheme('dark');
+    } else {
+      window.localStorage.setItem('theme', 'light');
+      setTheme('light');
+    }
+    window.location.reload()
+  };
+
+  React.useEffect(() => {
+    const localTheme = window.localStorage.getItem('theme');
+    return localTheme && setTheme(localTheme);
+  }, []);
 
   return (
     <SimpleGrid
@@ -57,6 +75,11 @@ export const NavBarMobile = () => {
       </Flex> */}
       <Box>Gestic</Box>
       <Box>
+                    <Link onClick={toggleTheme} _hover={{ textDecoration: 'none' }} m={2}>
+                    <Button style={ {paddingBottom: '6px'}}color={theme === 'light' ? 'white' : 'white'} background="None">
+                      ☾
+                    </Button>
+                  </Link>
         <Link fontSize="3xl" alignSelf="center" ref={btnRef} colorScheme="quaternary" onClick={onOpen}>
           {/* <Icon as={HamburgerIcon} /> */}
           <HamburgerIcon />
@@ -111,6 +134,9 @@ export const NavBarMobile = () => {
                       Ofertas de Disciplina
                     </Link>
                   </Box>
+                  <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
+                      <Link href="/complementary-activities/list">Atividades Complementares</Link>
+                    </Box>
                 </Box>
                 {user && user.id !== '' ? (
                   <Box>
@@ -120,13 +146,25 @@ export const NavBarMobile = () => {
                     <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
                       <Link onClick={signOut}>Sair</Link>
                     </Box>
+                    <Link onClick={toggleTheme} _hover={{ textDecoration: 'none' }} m={2}>
+                      <Button color={theme === 'light' ? 'teal' : 'black'} background={theme === 'light' ? 'white' : 'teal'}>
+                        ☾
+                      </Button>
+                    </Link>
                   </Box>
                 ) : (
+                  <Box>
                   <Link href="/login">
                     <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
                       Login
                     </Box>
                   </Link>
+                    <Link onClick={toggleTheme} _hover={{ textDecoration: 'none' }} m={2}>
+                    <Button color={theme === 'light' ? 'teal' : 'black'} background={theme === 'light' ? 'white' : 'teal'}>
+                      ☾
+                    </Button>
+                  </Link>
+                  </Box>
                 )}
               </DrawerBody>
             </DrawerContent>
