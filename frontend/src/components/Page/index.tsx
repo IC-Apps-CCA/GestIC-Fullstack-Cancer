@@ -23,19 +23,27 @@ const Page = ({ children }: Props) => {
 
   return (
     <div
+    
       style={{
-        height: '100vh',
+        height: '100%',
         paddingTop: !isLargerThan768 ? 'initial' : '3.5rem',
         backgroundColor: theme === 'light' ? 'black' : 'white',
         overflow: 'hidden',
         left: '0',
         width: '100%',
+  
       }}
-    >
+    >     
+    {theme === 'light'? (
+    <style>{'body { background-color: white; }'}</style>
+
+    ): 
+    <style>{'body { background-color: #121212; }'}</style>
+  }
       <NavBar />
       <div
         style={{
-          height: '160%',
+          height: '100%',
           paddingTop: !isLargerThan768 ? 'initial' : '3.5rem',
           backgroundColor: theme === 'light' ? 'white' : '#121212',
           overflow: 'hidden',
