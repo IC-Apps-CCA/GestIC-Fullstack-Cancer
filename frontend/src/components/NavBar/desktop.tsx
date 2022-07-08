@@ -56,7 +56,7 @@ export const NavBarDesktop = () => {
           <Flex alignItems="center">
             <Link fontSize="3xl" alignSelf="center" ref={btnRef} colorScheme="quaternary" onClick={onOpen}>
               {/* <Icon as={HamburgerIcon} /> */}
-              <HamburgerIcon />
+              <HamburgerIcon style={{ color: "white" }} />
             </Link>
             {/* <Heading size="md" ml={4}><Link href="/">GestIC</Link></Heading> */}
           </Flex>
@@ -66,7 +66,7 @@ export const NavBarDesktop = () => {
                 <DrawerCloseButton top={8} right={4} fontSize="1rem" />
                 <DrawerHeader pt={6}>
                   <Box top={8} position="absolute">
-                    <Link href="/">GestIC</Link>
+                    <Link color="white" href="/">GestIC</Link>
                   </Box>
                 </DrawerHeader>
                 <DrawerBody
@@ -96,6 +96,9 @@ export const NavBarDesktop = () => {
                     </Box>
                     <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
                       <Link href="/ofertas-disciplinas">Ofertas de Disciplina</Link>
+                    </Box>
+                    <Box fontSize="1.2rem" onClick={onToggle} mb={3}>
+                      <Link href="/complementary-activities/list">Atividades Complementares</Link>
                     </Box>
                   </Box>
                   {/* user && user.id !== ''  */}
@@ -137,7 +140,7 @@ export const NavBarDesktop = () => {
         </Box>
         <Flex alignItems="center">
           <Heading size="md" ml={4}>
-            <Link href="/">GestIC</Link>
+            <Link color="white" href="/">GestIC</Link>
           </Heading>
         </Flex>
         {user && user.id !== '' ? (

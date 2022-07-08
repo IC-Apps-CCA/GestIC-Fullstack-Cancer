@@ -61,7 +61,7 @@ const Informative = () => {
           Informativos
         </Heading>
         {!!informativeList.length && (
-          <Text fontSize="md" right="0" position="absolute">
+          <Text style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} fontSize="md" right="0" position="absolute">
             <Link href="informativos">Ver todos</Link>
           </Text>
         )}

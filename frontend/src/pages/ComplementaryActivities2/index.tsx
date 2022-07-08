@@ -85,10 +85,10 @@ const ComplementaryActivities = () => {
               ?.toLowerCase()
               .includes(
                 value.toLowerCase() ||
-                  activity?.group?.toLowerCase().includes(value.toLowerCase()) ||
-                  activity?.hours?.toLowerCase().includes(value.toLowerCase()) ||
-                  activity?.start?.toLowerCase().includes(value.toLowerCase()) ||
-                  activity?.end?.toLowerCase().includes(value.toLowerCase()),
+                activity?.group?.toLowerCase().includes(value.toLowerCase()) ||
+                activity?.hours?.toLowerCase().includes(value.toLowerCase()) ||
+                activity?.start?.toLowerCase().includes(value.toLowerCase()) ||
+                activity?.end?.toLowerCase().includes(value.toLowerCase()),
               )
           );
         });
@@ -155,14 +155,14 @@ const ComplementaryActivities = () => {
             <Tbody>
               {activitiesSearch.map(activity => {
                 return (
-                  <Tr key={activity.id}>
+                  <Tr style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} key={activity.id}>
                     <Td>{activity.owner}</Td>
                     <Td>
                       <Link display="block" href={`complementary-actvities/show/${activity.id}`}>
                         {activity.name}
                       </Link>
                     </Td>
-                    <Td>{activity.description}</Td>
+                    <Td >{activity.description}</Td>
                     <Td>{activity.group}</Td>
                     <Td>{activity.hours}</Td>
                     <Td>{activity.start}</Td>
@@ -176,7 +176,7 @@ const ComplementaryActivities = () => {
           <Text style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }}>Não há atividades cadastradas</Text>
         )}
       </Box>
-    </Page>
+    </Page >
   );
 };
 
