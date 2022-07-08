@@ -40,6 +40,24 @@ export const ResearchGroupItem = ({
   const { user } = useAuth();
   const { id } = useParams<{ id: string }>();
 
+  const [theme, setTheme] = React.useState('light');
+
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      window.localStorage.setItem('theme', 'dark');
+      setTheme('dark');
+    } else {
+      window.localStorage.setItem('theme', 'light');
+      setTheme('light');
+    }
+    window.location.reload()
+  };
+
+  React.useEffect(() => {
+    const localTheme = window.localStorage.getItem('theme');
+    return localTheme && setTheme(localTheme);
+  }, []);
+
   return (
     <Box mt={4} mb={8}>
       <Box mb={3} display="flex" alignItems="center" justifyContent="space-between">
@@ -65,25 +83,25 @@ export const ResearchGroupItem = ({
         )}
       </Box>
       <Box mt={2} textAlign="left">
-        <Text fontSize="22px">{researchGroup.description}</Text>
+        <Text style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} fontSize="22px">{researchGroup.description}</Text>
       </Box>
 
       <Box mt={3} textAlign="left">
-        <Text fontSize="18px">
+        <Text style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} fontSize="18px">
           <b>Tipo de pesquisa: </b>
           {researchGroup.researchType}
         </Text>
       </Box>
 
       <Box mt={3} textAlign="left">
-        <Text fontSize="18px">
+        <Text style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} fontSize="18px">
           <b>Atividades e objetivos: </b>
           {researchGroup.activities}
         </Text>
       </Box>
 
       <Box mt={3} textAlign="left">
-        <Text fontSize="18px">
+        <Text style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} fontSize="18px">
           <div>
             <b>Participantes: </b>
           </div>
@@ -92,15 +110,15 @@ export const ResearchGroupItem = ({
               <Tbody>
                 {researchGroup.participants.map((student: any) => {
                   return (
-                    <Tr key={student.name}>
-                      <Td>{student.name}</Td>
+                    <Tr  key={student.name}>
+                      <Td style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} >{student.name}</Td>
                     </Tr>
                   );
                 })}
               </Tbody>
             </Table>
           ) : (
-            <Text>Não há alunos participando deste projeto ainda.</Text>
+            <Text style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} >Não há alunos participando deste projeto ainda.</Text>
           )}
         </Text>
       </Box>
