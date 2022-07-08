@@ -4,7 +4,7 @@ import { MdModeEdit } from 'react-icons/md';
 // import { useHistory } from 'react-router-dom';
 import { BsTrashFill } from 'react-icons/bs';
 import { useAuth } from '../../../providers/AuthProvider';
-
+import React, { useEffect, useRef, useState } from 'react';
 interface projectData {
   id: string;
   userId: string;
@@ -23,10 +23,25 @@ interface PropsProjectItem {
   clickToRemove(): void;
 }
 
-const ProjectItem: React.FC<PropsProjectItem> = ({ project, clickToRemove = () => {}, withActions = true }) => {
+const ProjectItem: React.FC<PropsProjectItem> = ({ project, clickToRemove = () => { }, withActions = true }) => {
   // const history = useHistory();
   const { user } = useAuth();
+  const [theme, setTheme] = useState('light');
 
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      window.localStorage.setItem('theme', 'dark');
+      setTheme('dark');
+    } else {
+      window.localStorage.setItem('theme', 'light');
+      setTheme('light');
+    }
+  };
+
+  useEffect(() => {
+    const localTheme = window.localStorage.getItem('theme');
+    return localTheme && setTheme(localTheme);
+  }, []);
   // const goToPage = (id: string | number) => {
   //   history.push(`projetos-ativos/show/${id}`);
   // };
@@ -35,7 +50,7 @@ const ProjectItem: React.FC<PropsProjectItem> = ({ project, clickToRemove = () =
     <Box mt={4} mb={8}>
       <Box mb={3} display="flex" alignItems="center" justifyContent="space-between">
         <Center flexDirection="column">
-          <Heading color="black" textAlign="center" mb={6}>
+          <Heading color={theme === 'light' ? 'black' : 'white'} textAlign="center" mb={6}>
             {project.name}
           </Heading>
         </Center>
@@ -55,25 +70,25 @@ const ProjectItem: React.FC<PropsProjectItem> = ({ project, clickToRemove = () =
       </Box>
 
       <Box mt={2} textAlign="left">
-        <Text fontSize="22px">{project.description}</Text>
+        <Text color={theme === 'light' ? 'black' : '#bebebe'} fontSize="22px">{project.description}</Text>
       </Box>
 
       <Box mt={3} textAlign="left">
-        <Text fontSize="18px">
+        <Text color={theme === 'light' ? 'black' : '#bebebe'} fontSize="18px">
           <b>Tipo de pesquisa: </b>
           {project.researchType}
         </Text>
       </Box>
 
       <Box mt={3} textAlign="left">
-        <Text fontSize="18px">
+        <Text color={theme === 'light' ? 'black' : '#bebebe'} fontSize="18px">
           <b>Atividades e objetivos: </b>
           {project.activities}
         </Text>
       </Box>
 
       <Box mt={3} textAlign="left">
-        <Text fontSize="18px">
+        <Text color={theme === 'light' ? 'black' : '#bebebe'} fontSize="18px">
           <div>
             <b>Participantes: </b>
           </div>
@@ -82,15 +97,15 @@ const ProjectItem: React.FC<PropsProjectItem> = ({ project, clickToRemove = () =
               <Tbody>
                 {project.participants.map(student => {
                   return (
-                    <Tr key={student.name}>
-                      <Td>{student.name}</Td>
+                    <Tr color={theme === 'light' ? 'black' : '#bebebe'} key={student.name}>
+                      <Td color={theme === 'light' ? 'black' : '#bebebe'}  >{student.name}</Td>
                     </Tr>
                   );
                 })}
               </Tbody>
             </Table>
           ) : (
-            <Text>Não há alunos participando deste projeto ainda.</Text>
+            <Text color={theme === 'light' ? 'black' : '#bebebe'} >Não há alunos participando deste projeto ainda.</Text>
           )}
         </Text>
       </Box>
