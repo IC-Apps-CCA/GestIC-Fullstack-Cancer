@@ -73,7 +73,7 @@ export const NavBarMobile = () => {
           <Link>Informações Úteis</Link>
         </Box>
       </Flex> */}
-      <Box>Gestic</Box>
+      <Box><Link href="/">GestIC</Link></Box>
       <Box>
                     <Link onClick={toggleTheme} _hover={{ textDecoration: 'none' }} m={2}>
                     <Button style={ {paddingBottom: '6px'}}color={theme === 'light' ? 'white' : 'white'} background="None">
