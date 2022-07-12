@@ -14,7 +14,7 @@ import { useAuth } from '../../../providers/AuthProvider';
 const schema = yup.object().shape({
   name: yup.string().trim().required('Campo obrigatório'),
   description: yup.string().trim().required('Campo obrigatório'),
-  researchType: yup.string().trim().required('Campo obrigatório'),
+  type: yup.string().trim().required('Campo obrigatório'),
 });
 
 interface ProjectData {
@@ -130,19 +130,19 @@ const ProjectNewEdit = () => {
               />
 
               <Controller
-                name="researchType"
+                name="type"
                 control={control}
                 render={({ field }) => (
                   <>
                     <FormLabel>Tipo de Pesquisa</FormLabel>
-                    <Select {...field} errorMessage={errors?.researchType?.message}>
+                    <Select {...field} errorMessage={errors?.type?.message}>
                       <option style={{ color: '#192A51' }} disabled selected>Selecione uma</option>
                       <option style={{ color: '#192A51' }} value='PIBIT'>PIBIT</option>
                       <option style={{ color: '#192A51' }} value='PIBIC'>PIBIC</option>
                     </Select>
                   </>
                 )}
-                defaultValue={oldProject?.researchType}
+                defaultValue={oldProject?.type}
               />
 
               <Box my={2} />
