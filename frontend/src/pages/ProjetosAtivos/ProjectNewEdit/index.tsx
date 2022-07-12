@@ -22,7 +22,7 @@ interface ProjectData {
   userId: string;
   name: string;
   description: string;
-  researchType: string;
+  type: string;
   participants?: {
     name: string;
   }[];
