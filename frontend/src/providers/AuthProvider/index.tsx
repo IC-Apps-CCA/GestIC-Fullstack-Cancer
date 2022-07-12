@@ -47,8 +47,8 @@ const AuthProvider: React.FC = ({ children }) => {
       email: '',
       profileTag: '',
     }
-
-    return {user: myUser} as AuthState;
+    // add myUser here to remove auth
+    return {} as AuthState;
   });
 
   const signIn = useCallback(async ({ email, password }) => {
