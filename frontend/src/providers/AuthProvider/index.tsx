@@ -39,7 +39,16 @@ const AuthProvider: React.FC = ({ children }) => {
       return { user: JSON.parse(user) };
     }
 
-    return {} as AuthState;
+    const myUser = {
+      title: '',
+      image_id: '',
+      id: '',
+      name: '',
+      email: '',
+      profileTag: '',
+    }
+
+    return {user: myUser} as AuthState;
   });
 
   const signIn = useCallback(async ({ email, password }) => {

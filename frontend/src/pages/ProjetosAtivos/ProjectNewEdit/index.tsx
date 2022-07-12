@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Button, Heading, Spinner, Stack, useMediaQuery, Text, useToast } from '@chakra-ui/react';
+import { Box, Button, Heading, Spinner, Stack, useMediaQuery, Text, useToast, Select, FormLabel } from '@chakra-ui/react';
 import { useHistory, useParams } from 'react-router-dom';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -14,6 +14,7 @@ import { useAuth } from '../../../providers/AuthProvider';
 const schema = yup.object().shape({
   name: yup.string().trim().required('Campo obrigatório'),
   description: yup.string().trim().required('Campo obrigatório'),
+  researchType: yup.string().trim().required('Campo obrigatório'),
 });
 
 interface ProjectData {
@@ -21,7 +22,7 @@ interface ProjectData {
   userId: string;
   name: string;
   description: string;
-  researchType?: string;
+  researchType: string;
   participants?: {
     name: string;
   }[];
@@ -37,6 +38,18 @@ const ProjectNewEdit = () => {
   const [isLoading, setIsLoading] = React.useState(false);
 
   const toast = useToast();
+
+  const [time, setTime] = React.useState(Date.now());
+
+  let theme = window.localStorage.getItem('theme');
+
+  React.useEffect(() => {
+    const interval = setInterval(() => setTime(Date.now()), 100);
+    return () => {
+      theme = window.localStorage.getItem('theme');
+      clearInterval(interval);
+    };
+  }, []);
 
   const getProject = async () => {
     setIsLoading(true);
@@ -105,7 +118,7 @@ const ProjectNewEdit = () => {
             {isLoading ? <Spinner color="teal" size="xl" /> : <Text>Não há um projeto com esse id.</Text>}
           </Box>
         ) : (
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }} onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={2}>
               <Controller
                 name="name"
@@ -116,6 +129,22 @@ const ProjectNewEdit = () => {
                 defaultValue={oldProject?.name}
               />
 
+              <Controller
+                name="researchType"
+                control={control}
+                render={({ field }) => (
+                  <>
+                    <FormLabel>Tipo de Pesquisa</FormLabel>
+                    <Select {...field} errorMessage={errors?.researchType?.message}>
+                      <option style={{ color: '#192A51' }} disabled selected>Selecione uma</option>
+                      <option style={{ color: '#192A51' }} value='PIBIT'>PIBIT</option>
+                      <option style={{ color: '#192A51' }} value='PIBIC'>PIBIC</option>
+                    </Select>
+                  </>
+                )}
+                defaultValue={oldProject?.researchType}
+              />
+
               <Box my={2} />
 
               <Controller
@@ -123,6 +152,7 @@ const ProjectNewEdit = () => {
                 control={control}
                 render={({ field }) => (
                   <CustomTextarea
+                    style={{ color: theme === 'light' ? '#192A51' : '#F5E6E8' }}
                     {...field}
                     rows={6}
                     type="text"
