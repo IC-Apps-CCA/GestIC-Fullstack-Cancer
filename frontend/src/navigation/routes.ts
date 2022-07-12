@@ -1,6 +1,7 @@
 import Dashboard from '../pages/Dashboard';
 import ProjetosAtivos from '../pages/ProjetosAtivos';
 import ActiveProjectItemPage from '../pages/ProjetosAtivos/Project';
+import ProjectNewEdit from '../pages/ProjetosAtivos/ProjectNewEdit';
 import { GruposPesquisaItemPage, GruposPesquisaList, GruposPesquisaNewEdit } from '../pages/GruposPesquisa';
 import { InformativeItemPage, InformativeList, InformativeNewEdit } from '../pages/Informative';
 import SignIn from '../pages/SignIn';
@@ -80,6 +81,7 @@ export const routes = [
   },
   {
     path: '/projetos-ativos/new',
+    component: ProjectNewEdit,
     private: true,
     roles: [],
   },
