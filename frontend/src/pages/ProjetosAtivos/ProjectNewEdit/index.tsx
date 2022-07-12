@@ -17,8 +17,8 @@ const schema = yup.object().shape({
 });
 
 interface ProjectData {
-  project_id?: string;
-  userId?: string;
+  id?: string;
+  userId: string;
   name: string;
   description: string;
   researchType?: string;
@@ -27,6 +27,7 @@ interface ProjectData {
   }[];
   activities?: string;
 }
+
 const ProjectNewEdit = () => {
   const [isLargerThan766] = useMediaQuery('(max-width: 766px)');
   const history = useHistory();
@@ -40,7 +41,7 @@ const ProjectNewEdit = () => {
   const getProject = async () => {
     setIsLoading(true);
     try {
-      const { data } = await api.get(`/projetos-ativos/show/${id}`);
+      const { data } = await api.get(`/project/${id}`);
       if (data) {
         setOldProject(data);
       }
@@ -68,11 +69,11 @@ const ProjectNewEdit = () => {
     console.log(data)
     console.log('aqui')
     try {
-      // if (id) {
-      //   await api.put('projetos-ativos/show', { ...data, id });
-      // } else {
-      //   await api.post('projetos-ativos', data);
-      // }
+      if (id) {
+        await api.put('project', { ...data, id });
+      } else {
+        await api.post('project', data);
+      }
       toast({
         title: id ? 'Projeto editado com sucesso' : 'Novo Projeto criado com sucesso',
         status: 'success',
