@@ -70,8 +70,15 @@ const ActiveProjectItemPage = () => {
     setIsOpen(true);
   };
 
-  const removeProject = () => {
+  const removeProject = async () => {
     console.log('Project', project);
+    try{
+      const response = await api.delete(`/project/${id}`);
+      console.log('status response', response.status);
+      history.push('/projetos-ativos');
+    } catch (err) {
+      console.error(err);
+    }
     onClose();
   };
 
